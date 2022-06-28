@@ -16,8 +16,16 @@ class EmployeeService {
   };
 
   updateEmployee = (employeeId, employee) => {
-    console.log(employee);
-    return axios.put(EMPLOYEE_API_BASE_URL, '/' + employeeId, employee);
+    // return axios.put(EMPLOYEE_API_BASE_URL, '/' + employeeId, employee);
+    return axios({
+      method: 'put',
+      url: `${EMPLOYEE_API_BASE_URL}/${employeeId}`,
+      data: {
+        firstName: employee.firstName,
+        lastName: employee.lastName,
+        emailId: employee.emailId,
+      },
+    });
   };
 
   deleteEmployee = (employeeId) => {
